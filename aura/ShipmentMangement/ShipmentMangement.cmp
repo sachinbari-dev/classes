@@ -1,0 +1,749 @@
+<aura:component controller="Add_Shipment" implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningQuickAction" access="global" >
+    <aura:attribute name="pickupId" type="String"/>
+    <aura:attribute name="CustomerId" type="String"/>
+    <aura:attribute name="SA_ID" type="String"/>
+    <aura:attribute name="OAddressID" type="String"/>
+    <aura:attribute name="CS_ACCID" type="String"/>
+    <aura:attribute name="D_Address" type="String"/>
+    <aura:attribute name="Con_pan" type="String"/>
+    <aura:attribute name="Con_Ac_Name" type="String"/>
+    <aura:attribute name="errorMessage" type="String" />
+    <aura:attribute name="Inv_Id1" type="String"/>
+    
+    <aura:attribute name="inv_Id" type="String"/>
+    
+    <aura:attribute name="V1" type="Decimal" default="0.00"/>
+    <aura:attribute name="V2" type="Decimal" default="0.00"/>
+    <aura:attribute name="V3" type="String" default=""/>
+    <aura:attribute name="V4" type="String" default="Grams"/>
+    <aura:attribute name="V5" type="String" default="Invoice"/>
+    <aura:attribute name="V6" type="String" default="INR"/>
+    <aura:attribute name="V7" type="String" default=""/>
+    <aura:attribute name="recordId" type="String"/>
+    <aura:attribute name="ShipId" type="String"/>
+    
+    <aura:attribute name="nwc" type="integer"/>
+    <aura:attribute name="refNo" type="String"/>
+    <aura:attribute name="IValue" type="integer"/>
+    <aura:attribute name="nwc_Total" type="integer"/>
+    <aura:attribute name="IValue_Total" type="integer"/>
+    <aura:attribute name="ValuesList" type="List"/>
+    <aura:attribute name="ValuesList1" type="List"/>
+    <aura:attribute name="ValList" type="Object[]"/>
+    
+    <aura:attribute name="C_Doc_List" type="List"/>
+    
+    <aura:attribute name="BVCServices1" type="String" default="None"/>
+    <aura:attribute name="ProdcutDescription1" type="String" default="None"/>
+    <aura:attribute name="InsuranceBy1" type="String" default="Customer"/>
+  
+    <aura:attribute name="BVCServices" type="List" access="global"/> 
+    <aura:attribute name="ProdcutDescription" type="List" access="global"/>
+    <aura:attribute name="InsuranceBy" type="List" access="global"/> 
+    <aura:attribute name="B1" type="boolean" access="global" default="false"/>
+    <aura:attribute name="sb" type="boolean" access="global" default="false"/>
+    
+    <aura:attribute name="shPage" type="boolean" access="global" default="false"/>
+    <aura:attribute name="editPage" type="boolean" access="global" default="true"/>
+    <aura:attribute name="hide" type="boolean" access="global" default="flase"/>
+    <aura:attribute name="spinner" type="boolean" access="global" default="false"/>
+    <aura:attribute name="hide1" type="boolean" access="global" default="flase"/>
+    <aura:attribute name="hide2" type="boolean" access="global" default="true"/>
+    
+    <aura:attribute name="sbwindow" type="boolean" access="global" default="false"/>
+    <aura:attribute name="filetype" type="List" default="['.png', '.jpg', '.jpeg']" />
+    
+    
+    <aura:attribute name="SelHub" type="Account"/>
+    <aura:attribute name="CAccount" type="Account"/>
+    <aura:attribute name="Pickup" type="Pickup__c"/>
+    <aura:attribute name="Shipment" type="Shipment__c"/>
+    <aura:attribute name="SelHub1" type="Object"/>
+    
+    <aura:attribute name="peopl" type="Object"/>
+    
+    <aura:attribute name="Remarks" type="String"/>
+    <aura:attribute type="DateTime" name="P_Date"/>
+    <aura:attribute name="stag" type="boolean" default="false"/>
+    <aura:attribute name="refresh" type="boolean" default="false"/>
+    <aura:attribute name="addFile" type="boolean" default="false"/>
+    <aura:attribute name="bt100" type="boolean" default="true"/>
+    
+    <aura:attribute name="dup" type="boolean" default="false"/>
+    
+    <aura:attribute name="PKName" type="String"/>
+    <aura:attribute name="data" type="Object"/>
+    <aura:attribute name="columns" type="List"/>
+    <aura:attribute name="errors" type="Object" default="[]"/>
+    <aura:attribute name="draftValues" type="Object" default="[]"/>
+    <aura:attribute name="show_edit_Invoice" type="Boolean" default="false"/> 
+    <aura:attribute name="consForm" type="boolean" default="false"/>
+    <aura:attribute name="DAForm" type="boolean" default="false"/>
+    <aura:attribute name="ConsN" type="String"/>
+    <aura:attribute name="pid" type="String"/>
+    <aura:attribute name="Name_As_Per_PAN_Manual_Inpu" type="String"/>
+    <aura:attribute name="ConsNid" type="String"/>
+    <aura:attribute name="PAN_Number_of_Entity" type="String"/>
+    <aura:attribute name="ACR_consumption_link" type="String"/>
+    <aura:attribute name="link_generated_date" type="datetime"/>
+    <aura:attribute name="First_Name" type="String"/>
+    <aura:attribute name="Last_Name" type="String"/>
+    <aura:attribute name="Primary_Customer_Email" type="String"/>
+    <aura:attribute name="Phone" type="String"/>
+    
+    <aura:attribute name="adRecTypeId" type="String"/>
+    <aura:attribute name="AdName" type="String"/>
+    <aura:attribute name="Your_Address_Identifier" type="String"/>
+    <aura:attribute name="addr1" type="String"/>
+    <aura:attribute name="addr2" type="String"/>
+    <aura:attribute name="actPinCode" type="String"/>  
+    
+    <aura:attribute name="ConForm" type="boolean" default="false"/>
+    <aura:attribute name="ContactName" type="String"/>
+    <aura:attribute name="ConMobile" type="String"/>
+    <aura:attribute name="ConEmail" type="String"/>
+    <aura:attribute name="shippingNoteNumberManualValue" type="String"/>
+    <aura:attribute name="barCodeData" type="String"/> 
+    <aura:attribute name="shipmentCreationflage" type="boolean" default="false"/>
+    <aura:attribute name="CustomerGW" type="Decimal" default="0.00"/> 
+    <!--    newly added -->
+    <aura:attribute name="c_cpc" type="String"/>
+    <aura:attribute name="c_pdes" type="String"/>
+    <aura:attribute name="S_nuom" type="String"/>
+    <aura:attribute name="S_ciso" type="String"/>
+    <aura:attribute name="I_nuom" type="String"/>
+    <aura:attribute name="I_ciso" type="String"/> 
+    <aura:attribute name="isButtonVisible" type="Boolean" default="true" />
+	<aura:attribute name="invoiceCount" type="Integer" default="0" />
+    <aura:attribute name="AdditionalRemarks" type="String"/>
+    <!--      -->    
+    <lightning:spinner aura:id="mySpinner" class="slds-hide"/>
+    <aura:attribute name="Liability_Type" type="String" default="None"/>
+    <aura:attribute name="showLiability_Type" type="Boolean" default="false"/>
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}" /> 
+    <!-- Add Contact Address Form -->
+    <aura:if isTrue="{!v.ConForm}">
+        <section role="dialog" tabindex="-1" aria-modal="true" aria-labelledby="modal-heading-01" class="slds-modal slds-fade-in-open">
+            <div class="slds-modal__container">
+                <button class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse">
+                    
+                    <span class="slds-assistive-text">Cancel and close</span>
+                </button>
+                <div class="slds-modal__header">
+                    <h1 id="modal-heading-01" class="slds-modal__title slds-hyphenate"> Receiver Form</h1>
+                </div>
+                <div class="slds-modal__content slds-p-around_medium" id="modal-content-id-1">
+                    
+                    <lightning:recordEditForm recordId="" objectApiName="Contact">
+                        <lightning:messages />                      
+                        <lightning:inputField fieldName="Name" value="{!v.ContactName}" required="true"/>
+                        <!--lightning:inputField fieldName="AccountId" value="{!v.SelHub.val}"  disabled="true"/-->
+                        <lightning:inputField fieldName="AddressBook__c" value="{!v.SelHub1.val}"  disabled="true"/>
+                        <lightning:inputField fieldName="MobilePhone" value="{!v.ConMobile}" required="true"/>
+                        <lightning:inputField fieldName="Email" value="{!v.ConEmail}" required="true"/>
+                        <div class="center-container">
+                            <lightning:button class="slds-m-top_small" variant="brand" type="submit" name="Save" label="Save" onclick="{!c.ConFormSuccessMessage}"/> 
+                            <!--                             <lightning:button class="slds-m-top_small" variant="brand" name="Save" label="Save" onclick="{!c.ConFormSuccessMessage}"/>  -->
+                        </div>
+                    </lightning:recordEditForm>   
+                    
+                    <!--
+                    <c:NewShipAddress/> -->
+                </div>
+                <div class="slds-modal__footer">
+                    <button class="slds-button slds-button_neutral" aria-label="Cancel and close" onclick="{!c.closeContForm}">Cancel</button>                    
+                </div>
+            </div>
+        </section>
+        <div class="slds-backdrop slds-backdrop_open" role="presentation"></div>        
+        
+    </aura:if>
+    
+    
+    <!-- Contact Address Form Ends --> 
+    <!-- Add Destination Address Form --> 
+    <aura:if isTrue="{!v.DAForm}">
+        <section role="dialog" tabindex="-1" aria-modal="true" aria-labelledby="modal-heading-01" class="slds-modal slds-fade-in-open">
+            <div class="slds-modal__container">
+                <button class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse">
+                    
+                    <span class="slds-assistive-text">Cancel and close</span>
+                </button>
+                <div class="slds-modal__header">
+                    <h1 id="modal-heading-01" class="slds-modal__title slds-hyphenate">Address Form</h1>
+                </div>
+                <div class="slds-modal__content slds-p-around_medium" id="modal-content-id-1">
+                    
+                    <lightning:recordEditForm recordId="" objectApiName="AddressBook__c">
+                        <lightning:messages />
+                        <lightning:inputField fieldName="Name" value="{!v.AdName}" required="true"/>                        
+                        <lightning:inputField fieldName="Customer__c" value="{!v.SelHub.val}" required="true"/>
+                        <lightning:inputField fieldName="Your_Address_Identifier__c" value="{!v.Your_Address_Identifier}" required="true"/>
+                        <lightning:inputField fieldName="RecordTypeId" value="{!v.adRecTypeId}" disabled="true"/>
+                        <lightning:inputField fieldName="ADDRESS1__c" value="{!v.addr1}" required="true"/>
+                        <lightning:inputField fieldName="ADDRESS2__c" value="{!v.addr2}"/>                        
+                        <lightning:inputField fieldName="Active_Pincode__c" value="{!v.actPinCode}" required="true"/>
+                       
+                        <div class="center-container">
+                            <!--                            <lightning:button class="slds-m-top_small" variant="brand" type="submit" name="Save" label="Save" onclick="{!c.DAFormSuccessMessage}"/> -->
+                            <lightning:button class="slds-m-top_small" variant="brand" name="Save" label="Save" onclick="{!c.DAFormSuccessMessage}"/>
+                        </div>
+                    </lightning:recordEditForm>   
+                    
+                    <!--
+                    <c:NewShipAddress/> -->
+                </div>
+                <div class="slds-modal__footer">
+                    <button class="slds-button slds-button_neutral" aria-label="Cancel and close" onclick="{!c.closeDAForm}">Cancel</button>                    
+                </div>
+            </div>
+        </section>
+        <div class="slds-backdrop slds-backdrop_open" role="presentation"></div>        
+        
+    </aura:if>
+    <!-- Add Destination Address Form Close -->
+    
+    
+    <!-- Add Consinee Form --> 
+    <aura:if isTrue="{!v.consForm}">
+        <section role="dialog" tabindex="-1" aria-modal="true" aria-labelledby="modal-heading-01" class="slds-modal slds-fade-in-open">
+            <div class="slds-modal__container">
+                <button class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse">
+                    
+                    <span class="slds-assistive-text">Cancel and close</span>
+                </button>
+                <div class="slds-modal__header">
+                    <h1 id="modal-heading-01" class="slds-modal__title slds-hyphenate">Consignee Form</h1>
+                </div>
+                <div class="slds-modal__content slds-p-around_medium" id="modal-content-id-1">
+                    <lightning:recordEditForm recordId="" objectApiName="Account">
+                        <lightning:messages />
+                        <lightning:inputField fieldName="Name" value="{!v.ConsN}" required="true"/>
+                        <!--lightning:inputField fieldName="ParentId" value="{!v.pid}" /-->
+                        <lightning:inputField fieldName="Name_As_Per_PAN_Manual_Input__c" value="{!v.Name_As_Per_PAN_Manual_Inpu}" required="true"/>
+                        <lightning:inputField fieldName="PAN_Number_of_Entity__c" value="{!v.PAN_Number_of_Entity}" required="true"/>
+                        <!--lightning:inputField fieldName="ACR_consumption_link__c" value="{!v.ACR_consumption_link}"/-->
+                        <lightning:inputField fieldName="link_generated_date__c" value="{!v.link_generated_date}"/>
+                        <lightning:inputField fieldName="First_Name__c" value="{!v.First_Name}" required="true"/>
+                        <lightning:inputField fieldName="Last_Name__c" value="{!v.Last_Name}" required="true"/>
+                        <lightning:inputField fieldName="Primary_Customer_Email__c" value="{!v.Primary_Customer_Email}" required="true"/>
+                        <lightning:inputField fieldName="Phone" value="{!v.Phone}" required="true"/>
+                        <div class="center-container">
+                            <lightning:button class="slds-m-top_small" variant="brand" type="submit" name="Save" label="Save" onclick="{!c.ConsineeSuccessMessage}"/>
+                        </div>
+                    </lightning:recordEditForm>                      
+                    
+                </div>
+                <div class="slds-modal__footer">
+                    <button class="slds-button slds-button_neutral" aria-label="Cancel and close" onclick="{!c.closeConForm}">Cancel</button>                    
+                </div>
+            </div>
+        </section>
+        <div class="slds-backdrop slds-backdrop_open" role="presentation"></div>        
+        
+    </aura:if>
+    <!-- Add Consinee Form Close -->
+    
+    <!-- EDIT INVOICE -->
+    <aura:if isTrue="{!v.show_edit_Invoice}"> 
+        <lightning:recordEditForm recordId="{!v.inv_Id}" objectApiName="Customer_Documents__c">
+            <lightning:messages />
+            <lightning:outputField fieldName="Name" />
+            <lightning:inputField fieldName="Total_Net_Weight__c" />
+            <lightning:inputField fieldName="Unit_Weight__c" />
+            <lightning:inputField fieldName="Invoice_Value__c" />
+            <lightning:inputField fieldName="CurrencyIsoCode" />
+            <lightning:inputField fieldName="Reference_number__c" />
+            <lightning:inputField fieldName="Document_type__c" />
+            <lightning:inputField fieldName="Customer_Product_Category__c"/>
+            <lightning:inputField fieldName="Product_Description__c"/>            
+            <div class="center-container">
+                <lightning:button class="slds-m-top_small" variant="brand" type="submit" name="Save" label="Save" onclick="{!c.SuccessMessage}"/>
+            </div>
+            
+        </lightning:recordEditForm>                
+        
+    </aura:if>    
+    <aura:if isTrue="{!v.sbwindow}">
+        
+        <c:secureBagPhoto 
+                          pickupid="!v.recordId" SHIP_ID ="{!v.Shipment.Id}" snn="{!v.Shipment.Shipping_Note_Number__c}"
+                          con_Acc="{!v.Shipment.Consignee_Name_TMS__c}"
+                          Dest_Add="{!v.Shipment.Destination_Address_Name__c}" bvc_Ser ="{!v.Shipment.Customer_Product_Category__c}" 
+                          Prd_Des="{!v.Shipment.Product_Description__c}"
+                          onsenddata="{!c.handleDataFromLWC}"    
+                          />
+        <aura:if isTrue="{!v.bt100}">
+            <br/><br/>
+            <button class="buttonColor" onclick="{!c.saveInvoice}" >Back</button><br/><br/><br/>
+        </aura:if>        
+    </aura:if>
+    
+      <!-- Added By Sanket of net weight message display -->
+        <aura:if isTrue="{!v.sb}">
+    <lightningcommunity:backButton iconName="utility:chevronleft" class="slds-button_icon-small" onnavigationcomplete="{!c.handleBackPress}"/>
+    
+ 
+    <div class="slds-grid slds-align_absolute-center">
+        <lightning:button class="slds-col slds-size_1-of-2 slds-p-around_x-small smaller-button" variant="brand" label="Create Shipment" title="Create Shipment" onclick="{!c.navHome}" />
+        <lightning:button class="slds-col slds-size_1-of-2 slds-p-around_x-small" variant="brand" label="Add Secure Bags" title="Add Secure Bags" onclick="{!c.AddSB}" />
+    </div>
+
+    <!-- Error message display -->
+    <aura:if isTrue="{!v.errorMessage}">
+        <div class="slds-notify slds-notify_alert slds-theme_alert-texture slds-theme_error" role="alert">
+            <span class="slds-assistive-text">Error</span>
+            <h2>{!v.errorMessage}</h2>
+        </div>
+    </aura:if>
+<lightning:card>
+    <div class="slds-grid slds-wrap slds-align_absolute-center">
+        <table class="slds-table slds-table_cell-buffer slds-table_bordered">
+            <tbody>
+                <tr class="slds-has-flexi-truncate">
+                    <td class="slds-col slds-size_2-of-3">
+                        <lightning:input aura:id="customerGW" name="CustomerGW" label="Customer Gross Weight (Grams)" value="{!v.CustomerGW}" onclick="{!c.clearValue2}" />
+                    </td>
+                    <td class="slds-col slds-size_1-of-3 slds-text-align_right">
+                        <lightning:button aura:id="addButton" class="slds-button slds-button_brand" label="Update" title="Update" onclick="{!c.UpdateShip}" />
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</lightning:card>
+
+         <br/><br/>
+            <table class="slds-table slds-table--bordered slds-table--striped" style="width: 100%;">
+        <tr>
+            <th><strong>Invoice</strong></th>
+            <th style="text-align: right;">
+                <lightning:button class="slds-col slds-size_1-of-2 slds-p-around_x-small" variant="brand" label="Add" title="Add" onclick="{!c.Back2Invoice}" />
+            </th>
+        </tr>
+    </table>
+
+ <table style="width: 100%;">
+        <thead>
+            <tr class="slds-line-height_reset">
+                <th scope="col"><span class="slds-truncate">Invoice Details</span></th>
+                <th scope="col"><span class="slds-truncate">Upload Files</span></th>
+                <th scope="col"><span class="slds-truncate">EDIT</span></th>
+            </tr>
+        </thead>
+        <tbody>
+            <aura:iteration items="{!v.C_Doc_List}" var="A">
+                <tr class="slds-line-height_reset">
+                    <td class="slds-box slds-theme_shade">
+                        {!A.Name}<br/>
+                        <h6>Net Wet: {!A.Total_Net_Weight__c} , Value: {!A.Invoice_Value__c}</h6>
+                    </td>
+                    <td>
+                        <lightning:input name="fileUploader" type="file" label="Attach receipt" multiple="true" accept="image/png, .jpg, .jpeg" onchange="{!c.handleInvoiceImageUpload }"/>
+                       
+                    </td>
+                    <td>
+                        <div data-id="{!A.Id}" class="slds-box slds-theme_shade" onclick="{!c.handleSelect}">
+                            <lightning:button iconName="utility:edit" variant="brand"/>
+                        </div>
+                    </td>
+                </tr>
+            </aura:iteration>
+        </tbody>
+    </table>
+    <br/>
+    <b style="color: darkblue;">Total Net Weight: {!v.nwc_Total}</b><br/>
+    <b style="color: darkblue;">Total Value: {!v.IValue_Total}</b><br/>
+ <!--    <b style="color: darkblue;">Customer Gross Weight (Grams): {!v.CustomerGW}</b><br/> -->
+
+
+            
+        <br/><br/>
+        <lightning:button class="buttonColor" variant="brand" label="Back" title="Back" onclick="{!c.handleBackPress}" iconName="utility:back" /> 
+
+        
+        
+      
+        <aura:set attribute="else">
+            <div>
+                <aura:if isTrue="{!v.hide}">
+                    <lightning:card  title="Pickup Details" variant="narrow">    
+                        <lightning:input name="input1" readonly="true" value="{!v.Pickup.Name}" label="Pickup Name" />
+                        <lightning:input name="input2" readonly="true" value="{!v.Pickup.Customer__r.Name}" label="Customer" />
+                        <lightning:input name="input3" readonly="true" value="{!v.Pickup.Customer__r.Name}" label="Shipping Account" />
+                        <lightning:input name="input4" readonly="true" value="{!v.Pickup.Origin_Address_Name__r.Name}" label="Origin Address" />          
+                    </lightning:card>
+                </aura:if>
+                
+                <aura:if isTrue="{!v.hide2}">
+                    
+                    <lightning:card  title="Shipment Details" class="p">  
+                        <!-- LWC Added By Rafi Khan for Shipping Note Number Scanner -->
+                        <c:tmsBarCodeScanner pickupid="{!v.recordId}" onsendSNN="{!c.handleSNNFromLWC}"/>
+                        
+                       
+                        <div class="slds-form-element">
+                            <label class="slds-form-element__label" for="text-input-id-1">Shipping Note Number</label>
+                            <div class="slds-form-element__control">
+                                {!v.shippingNoteNumberManualValue}
+                            </div>
+                        </div> 
+                        <label class="slds-form-element__label " for="text-input-id-1">Consignee Account</label>
+                        <div class="slds-form-element__control">
+                            <c:TMS_Lookup2 objectName="Account"
+                                           field_API_text="Name"
+                                           field_API_val="Id"
+                                           limit="8"
+                                           field_API_search="Name"
+                                           lookupIcon="standard:asset_object" 
+                                           selItem="{!v.SelHub}"
+                                           placeholder="Search Shipping Account"
+                                           RecordType="Shipping"
+                                           />&nbsp;&nbsp; 
+                              <lightning:formattedText value="{!v.SelHub.text}" style="font-weight: bold;" />
+                        </div>   
+                        <!--lightning:button iconPosition="right"  variant="brand" label="Add Consignee"  title="Add Consignee"  onclick="{!c.addConsignee }" /-->       
+                        <br/>
+                       
+                        <aura:if isTrue="{!v.spinner}">            
+                            <lightning:spinner aura:id="spinner" variant="brand" size="large" />
+                        </aura:if>
+                        <!-- DESTINATION ADDRESS -->
+                        
+                        <label class="slds-form-element__label " for="text-input-id-1">Destination Address</label>
+                        
+                        
+                        
+                        <div class="slds-form-element__control">
+                            <c:TMS_Lookup2 objectName="AddressBook__c"
+                                           field_API_text="Name"
+                                           field_API_val="Id"
+                                           limit="8"
+                                           field_API_search="Name"
+                                           lookupIcon="standard:asset_object" 
+                                           selItem="{!v.SelHub1}"
+                                           placeholder="Search Shipping Address"
+                                           ShipAcId = "{!v.SelHub.val}"
+                                           />&nbsp;&nbsp; 
+                            <lightning:formattedText value="{!v.SelHub1.text}" style="font-weight: bold;" />
+                        </div> 
+                        <!--lightning:button iconPosition="right"  variant="brand" label="Add Address"  title="Add Address"  onclick="{!c.addDAForm }" /-->       
+                        <br/>
+                        
+                        <label class="slds-form-element__label" for="text-input-id-1"> Receiver Name</label>
+                        <div class="slds-form-element__control">
+                            <c:TMS_Lookup2 objectName="Contact"
+                                           field_API_text="Name"
+                                           field_API_val="Id"
+                                           limit="8"
+                                           field_API_search="Name"
+                                           lookupIcon="standard:contact" 
+                                           selItem="{!v.peopl}"
+                                           placeholder="Search People"
+                                           ShipAcId = "{!v.SelHub1.val}"
+                                           />&nbsp;&nbsp; 
+                        </div>             
+                        <!--lightning:button iconPosition="right"  variant="brand" label="Add Receiver"  title="Add Receiver"  onclick="{!c.addContForm }" /--> 
+                        <br/>
+                        
+                        <lightning:select name="BVC Service" label="BVC Service" aura:id="BVCServices" value="{!v.BVCServices1}" onchange="{! c.onChangeBVCServices }"
+                                      required="true"   >
+                            <aura:iteration items="{!v.BVCServices}" var="option">
+                                <option text="{!option.label}" value="{!option.id}" selected="{!option.selected}"/>
+                            </aura:iteration>
+                        </lightning:select>
+                        
+                        <lightning:recordEditForm objectApiName="Shipment__c" recordId="">
+        <lightning:messages />
+        
+        <!-- Input Fields -->
+        <lightning:inputField fieldName="Net_Weight_UOM_TMS__c" value="{!v.S_nuom}"
+                              onchange="{! c.onchangeS_nuom}"  required="true"/>
+        <lightning:inputField fieldName="CurrencyIsoCode" value="{!v.S_ciso}"  required="true"
+                              onchange="{! c.onChangeS_ciso}"/>
+        
+        <!-- Save Button -->
+    </lightning:recordEditForm>
+                        <!--
+                        <aura:if isTrue="{!v.B1}">
+                            <lightning:select name="PD" label="Product Description" aura:id="PD" value="{!v.ProdcutDescription1}" onchange="{! c.onChangeProdcutDescription}"
+                                           required="true"   >
+                                <aura:iteration items="{!v.ProdcutDescription}" var="option">
+                                    <option text="{!option.label}" value="{!option.id}" selected="{!option.selected}"/>
+                                </aura:iteration>
+                            </lightning:select> 
+                        </aura:if>
+                       -->
+                        <!-- Customer Gross Weight field added by Rafi Khan 
+                        <lightning:input name="CustomerGW" label="Customer Gross Weight (Grams)"  value = "{!v.CustomerGW}" />-->
+                        <!--
+                        <lightning:select name="InsuranceBy" label="Insurance By" aura:id="InsuranceBy" value="{!v.InsuranceBy1}" onchange="{! c.onChangeInsuranceBy}"
+                                          >
+                            <aura:iteration items="{!v.InsuranceBy}" var="option">
+                                <option text="{!option.label}" value="{!option.id}" selected="{!option.selected}"/>
+                            </aura:iteration>
+                        </lightning:select>  
+                       
+                        <lightning:recordEditForm objectApiName="Shipment__c" recordId=""> 
+                            
+                            <lightning:inputField fieldName="Insurance_By__c" value="{!v.InsuranceBy1}"
+                                                  onchange="{! c.onChangeInsuranceBy}"  /> 
+                            <aura:if isTrue="{!v.showLiability_Type}">
+                <lightning:inputField fieldName="Liability_Type__c" value="{!v.Liability_Type}"
+                                      onchange="{! c.onchangeLiability_Type}" required="true"  disabled="{!v.InsuranceBy1 == 'Customer'}" />  
+                </aura:if>
+                            
+                        </lightning:recordEditForm>  -->
+                        
+                        <lightning:input name="AdditionalRemarks" label="Additional Remarks" 
+                                         value = "{!v.AdditionalRemarks}"  onchange="{!c.onChangeAdditionalRemarks}"/>                        
+                    </lightning:card>
+                    <div>
+                        <center>
+                            <lightning:button iconPosition="right"  variant="brand" label="Next"  title="Next"  onclick="{!c.saveShip }" />
+                        </center>
+                    </div>            
+                </aura:if>
+                
+                <aura:if isTrue="{!v.hide1}">   
+                    
+                    <section role="dialog" tabindex="-1" aria-modal="true" aria-labelledby="modal-heading-01" class="slds-modal slds-fade-in-open">
+                        <div class="slds-modal__container">
+                            <button class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse">
+                                <span class="slds-assistive-text">Cancel and close</span>
+                            </button>
+                            <div class="slds-modal__header">
+                                <h1 id="modal-heading-01" class="slds-modal__title slds-hyphenate">ADD INVOICE</h1>
+                            </div>
+                            <div class="slds-modal__content slds-p-around_medium" id="modal-content-id-1">
+                                <!-- added the Code -->
+                                <lightning:card  title="Add Invoice Details">           
+                                    <lightning:recordEditForm recordId="" objectApiName="Customer_Documents__c">
+                                        <lightning:messages />
+                                        <!--
+                <lightning:inputField fieldName="Shipment__c" value="{!v.Shipment.Id}"/>  --> 
+                                        <lightning:inputField fieldName="Total_Net_Weight__c" value="{!v.V1}" required="true" onclick="{!c.clearValue}"/>
+                                        <lightning:inputField fieldName="Unit_Weight__c" value="{!v.S_nuom}" required="true" disabled="true"/>
+                                        <lightning:inputField fieldName="Invoice_Value__c" value="{!v.V2}" required="true" onclick="{!c.clearValue1}"/>
+                                        <lightning:inputField fieldName="CurrencyIsoCode" value="{!v.S_ciso}" disabled="true"/>
+                                        <lightning:inputField fieldName="Reference_number__c" required="true" value="{!v.V3}"/>           
+                                        <lightning:inputField fieldName="Document_type__c" value="{!v.V5}"/>
+                                        <lightning:inputField fieldName="Customer_Product_Category__c" value="{!v.c_cpc}" disabled="true"/> 
+                                        <lightning:inputField fieldName="Product_Description__c" value="{!v.c_pdes}"  required="true"/>                                        
+                                    </lightning:recordEditForm>
+                                   
+                                </lightning:card>                        
+                                <!-- upto Here -->                        
+                            </div>
+                            <div class="slds-modal__footer slds-modal__footer_directional">
+                                <!-- <button class="slds-button slds-button_neutral" onclick="{!c.saveInvoice}" >Next</button>-->
+                                <button class="slds-button slds-button_brand" onclick="{!c.saveanInvoice}" >Next</button>
+                                <aura:if isTrue="{!v.shPage}">
+                                    <button class="slds-button slds-button_brand" onclick="{!c.closeFileWindow1}" >Close</button>
+                                    <aura:set attribute="else">
+                                        <button class="slds-button slds-button_brand" onclick="{!c.closeFileWindow2}" >Close</button>
+                                    </aura:set>                        
+                                </aura:if>                        
+                            </div>
+                        </div>
+                    </section>
+                    <div class="slds-backdrop slds-backdrop_open" role="presentation"></div>            
+                    
+                </aura:if>
+            </div>
+        </aura:set>
+    </aura:if> 
+    
+    <!-- Single Page -->
+    <aura:if isTrue="{!v.shPage}">
+        <div>
+            
+            <aura:if isTrue="{!v.editPage}">
+                <lightning:buttonIcon class="slds-float_right" iconName="utility:edit" onclick="{!c.editClicked }" alternativeText="pencil Icon" />
+                <lightning:recordViewForm  aura:id="recordEditForm"
+                                          recordId="{!v.Shipment.Id}"
+                                          objectApiName="Shipment__c">
+                    <div class="slds-box">
+                        <lightning:outputField fieldName="Name" />
+                        <!-- add Fields -->
+                        
+                        <lightning:outputField fieldName="Shipping_Note_Number__c" value="{!v.Shipment.Shipping_Note_Number__c}"/>
+                        <lightning:outputField fieldName="Consignee_Name_TMS__c" value="{!v.Shipment.Customer__c}"/>
+                        <lightning:outputField fieldName="Destination_Address_Name__c" value="{!v.Shipment.Destination_Address_Name__c}"/>
+                        <lightning:outputField fieldName="Customer_Product_Category__c" value="{!v.Shipment.Customer_Product_Category__c}"/>
+                      <!--  <lightning:outputField fieldName="Product_Description__c" value="{!v.Shipment.Product_Description__c}"/>  -->
+                        <lightning:outputField fieldName="Customer_Gross_Weight__c" value="{!v.Shipment.Customer_Gross_Weight__c}"/>
+                    <!--    <lightning:outputField fieldName="Insurance_By__c" value="{!v.Shipment.Insurance_By__c}"/> -->
+                        <lightning:outputField fieldName="Additional_Remarks__c" value="{!v.AdditionalRemarks}"/>
+                        
+                        
+                        <!-- upto here -->
+                    </div>
+                </lightning:recordViewForm >    
+                <br/><br/>
+                <div>
+                    <center>
+                        <lightning:button class="slds-align_absolute-center"  variant="brand" label="Add Invoice"  title="Add Invoice"  onclick="{!c.closeFileWindow2}" />        
+                    </center>
+                </div>            
+                <aura:set attribute="else">
+                    
+                    <!-- SSHIPMENT EDIT FORM -->
+                    
+                    <lightning:card  title="Shipment Details" class="p">
+                        
+                        <lightning:input name="shippingNoteNumberManual"  id="shippingNoteNumberManual"
+                                         value="{!v.shippingNoteNumberManualValue}" 
+                                         onblur ="{! c.onChangeShipmentRecordGet }"
+                                         label="Shipping Note Number (Manual)" disabled="true"/>
+                        <div class="slds-form-element">
+                            <label class="slds-form-element__label" for="text-input-id-1">Shipping Note Number</label>
+                            <div class="slds-form-element__control">
+                                {!v.barCodeData}
+                            </div>
+                        </div> 
+                        <label class="slds-form-element__label " for="text-input-id-1">Consignee Account</label>
+                        <div class="slds-form-element__control">
+                            <c:TMS_Lookup2 objectName="Account"
+                                           field_API_text="Name"
+                                           field_API_val="Id"
+                                           limit="8"
+                                           field_API_search="Name"
+                                           lookupIcon="standard:asset_object" 
+                                           selItem="{!v.SelHub}"
+                                           placeholder="Search Shipping Account"
+                                           RecordType="Shipping"
+                                           />&nbsp;&nbsp; 
+                        </div>   
+                        <!--lightning:button iconPosition="right"  variant="brand" label="Add Consignee"  title="Add Consignee"  onclick="{!c.addConsignee }" /-->       
+                        <br/>
+                        
+                        <aura:if isTrue="{!v.spinner}">            
+                            <lightning:spinner aura:id="spinner" variant="brand" size="large" />
+                        </aura:if>
+                        <!-- DESTINATION ADDRESS -->
+                        
+                        <label class="slds-form-element__label " for="text-input-id-1">Destination Address</label>
+                        
+                        
+                        
+                        <div class="slds-form-element__control">
+                            <c:TMS_Lookup2 objectName="AddressBook__c"
+                                           field_API_text="Name"
+                                           field_API_val="Id"
+                                           limit="8"
+                                           field_API_search="Name"
+                                           lookupIcon="standard:asset_object" 
+                                           selItem="{!v.SelHub1}"
+                                           placeholder="Search Shipping Address"
+                                           ShipAcId = "{!v.SelHub.val}"
+                                           />&nbsp;&nbsp; 
+                        </div> 
+                        <!--lightning:button iconPosition="right"  variant="brand" label="Add Address"  title="Add Address"  onclick="{!c.addDAForm }" /-->       
+                        <br/>
+                       
+                        
+                        <label class="slds-form-element__label" for="text-input-id-1"> Receiver Name</label>
+                        <div class="slds-form-element__control">
+                            <c:TMS_Lookup2 objectName="Contact"
+                                           field_API_text="Name"
+                                           field_API_val="Id"
+                                           limit="8"
+                                           field_API_search="Name"
+                                           lookupIcon="standard:contact" 
+                                           selItem="{!v.peopl}"
+                                           placeholder="Search People"
+                                           ShipAcId = "{!v.SelHub1.val}"
+                                           />&nbsp;&nbsp; 
+                        </div>             
+                        <!--lightning:button iconPosition="right"  variant="brand" label="Add Receiver"  title="Add Receiver"  onclick="{!c.addContForm }" /--> 
+                        <br/>
+                        <lightning:select name="BVC Service" label="BVC Service" aura:id="BVCServices" value="{!v.BVCServices1}" onchange="{! c.onChangeBVCServices }"
+                                    required="true">
+                            <aura:iteration items="{!v.BVCServices}" var="option">
+                                <option text="{!option.label}" value="{!option.id}" selected="{!option.selected}"/>
+                            </aura:iteration>
+                        </lightning:select>
+                        
+                        <lightning:recordEditForm objectApiName="Shipment__c" recordId="">
+        <lightning:messages />
+        
+        <!-- Input Fields -->
+        <lightning:inputField fieldName="Net_Weight_UOM_TMS__c" value="{!v.S_nuom}"
+                              onchange="{! c.onchangeS_nuom}" required="true" />
+        <lightning:inputField fieldName="CurrencyIsoCode" value="{!v.S_ciso}"
+                              onchange="{! c.onChangeS_ciso}" required="true"/>
+        
+        <!-- Save Button -->
+    </lightning:recordEditForm>  
+                        <!--
+                        <aura:if isTrue="{!v.B1}">
+                            <lightning:select name="PD" label="Product Description" aura:id="PD" value="{!v.ProdcutDescription1}" onchange="{! c.onChangeProdcutDescription}"
+                                       required="true">
+                                <aura:iteration items="{!v.ProdcutDescription}" var="option">
+                                    <option text="{!option.label}" value="{!option.id}" selected="{!option.selected}"/>
+                                </aura:iteration>
+                            </lightning:select> 
+                        </aura:if>
+                        -->
+                        <!-- Customer Gross Weight field added by Rafi Khan -->
+                        <lightning:input name="CustomerGW" label="Customer Gross Weight (Grams)" value = "{!v.CustomerGW}"/>
+                        
+                        <lightning:recordEditForm objectApiName="Shipment__c" recordId=""> 
+                            
+                            <lightning:inputField fieldName="Insurance_By__c" value="{!v.InsuranceBy1}"
+                                                  onchange="{! c.onChangeInsuranceBy}"  /> 
+                            <aura:if isTrue="{!v.showLiability_Type}">
+                            <lightning:inputField fieldName="Liability_Type__c" value="{!v.Liability_Type}"
+                                                  onchange="{! c.onchangeLiability_Type}"  />  
+                            </aura:if>
+                        </lightning:recordEditForm>                         
+                        <!--
+                        <lightning:select name="InsuranceBy" label="Insurance By" aura:id="InsuranceBy" value="{!v.InsuranceBy1}" onchange="{! c.onChangeInsuranceBy}"
+                                          >
+                            <aura:iteration items="{!v.InsuranceBy}" var="option">
+                                <option text="{!option.label}" value="{!option.id}" selected="{!option.selected}"/>
+                            </aura:iteration>
+                        </lightning:select> --> 
+                        <lightning:input name="AdditionalRemarks" label="Additional Remarks" 
+                             value = "{!v.AdditionalRemarks}"  onchange="{!c.onChangeAdditionalRemarks}"/>                        
+                    </lightning:card>            
+                    <table>
+                        <tr>
+                            <td>
+                                <lightning:button iconPosition="right"  variant="brand" label="UPDATE"  title="UPDATE"  onclick="{!c.UpdateShip }" />
+                            </td>
+                            <td>
+                                <lightning:button iconPosition="right"  variant="brand" label="CANCEL"  title="CANCEL"  onclick="{!c.closeWindoiw}" />
+                            </td>
+                        </tr>    
+                    </table>    
+     
+                </aura:set>                        
+            </aura:if>
+            
+        </div>
+    </aura:if>
+    <aura:if isTrue="{!v.addFile}">
+        
+        <section role="dialog" tabindex="-1" aria-modal="true" aria-labelledby="modal-heading-01" class="slds-modal slds-fade-in-open">
+            <div class="slds-modal__container">
+                <div class="slds-modal__header">
+                    <h1 id="modal-heading-01" class="slds-modal__title slds-hyphenate">Upload Invoice Photo</h1>
+                </div>
+                <div class="slds-modal__content slds-p-around_medium" id="modal-content-id-1">
+                    <lightning:input name="fileUploader" type="file" label="Attach receipt" multiple="true" accept="image/png, .jpg, .jpeg" onchange="{!c.handleInvoiceImageUpload }"/>
+                    
+                
+                <div class="slds-modal__footer slds-modal__footer_directional slds-align_absolute-center">
+                    <button iconPosition="right" class="slds-button slds-button_brand" onclick="{!c.SuccessMessage }">Save</button>
+                    
+                </div>
+                </div>
+            </div>
+        </section>
+        <div class="slds-backdrop slds-backdrop_open" role="presentation"></div>
+        
+    </aura:if>
+    
+</aura:component>

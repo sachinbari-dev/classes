@@ -1,0 +1,32 @@
+<aura:component implements="flexipage:availableForAllPageTypes,force:appHostable"
+                access="global">
+
+    <aura:attribute name="scannedValue" type="String"/>
+    <aura:attribute name="errorMessage" type="String"/>
+
+    <!-- REQUIRED: Barcode Scanner -->
+    <lightning:barcodeScanner aura:id="scanner"/>
+
+    <lightning:card title="QR Code Scanner">
+        <div class="slds-p-around_medium">
+
+            <lightning:button
+                label="Scan QR Code"
+                variant="brand"
+                onclick="{!c.startScan}" />
+
+            <aura:if isTrue="{!not(empty(v.scannedValue))}">
+                <p class="slds-m-top_medium">
+                    <b>Scanned Value:</b> {!v.scannedValue}
+                </p>
+            </aura:if>
+
+            <aura:if isTrue="{!not(empty(v.errorMessage))}">
+                <p class="slds-text-color_error slds-m-top_medium">
+                    {!v.errorMessage}
+                </p>
+            </aura:if>
+
+        </div>
+    </lightning:card>
+</aura:component>

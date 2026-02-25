@@ -1,0 +1,63 @@
+<aura:component implements="force:appHostable,lightning:availableForFlowScreens,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningQuickAction" access="global" >
+    <aura:attribute name="nwc" type="integer"/>
+    <aura:attribute name="refNo" type="String"/>
+    <aura:attribute name="IValue" type="integer"/>
+    <aura:attribute name="nwc_Total" type="integer"/>
+    <aura:attribute name="IValue_Total" type="integer"/>
+    <aura:attribute name="ValuesList" type="List"/>
+    <aura:attribute name="ValuesList1" type="List"/>
+    <aura:attribute name="ValList" type="Object[]"/>
+    <aura:handler  name="init" value="{!this}" action="{!c.doinit}"/>
+        <lightning:flow aura:id="invTable" >                
+        </lightning:flow>
+    <div class="p">
+        <table class="slds-table slds-table_cell-buffer slds-table_bordered slds-table_col-bordered" aria-label="Example table of Opportunities with vertical borders">
+            <thead>
+                <tr class="slds-line-height_reset">
+                    <th class="" scope="col">
+                        <div class="slds-truncate" title="Net Weight Carat">Net Weight Carat</div>
+                    </th>
+                    <th class="" scope="col">
+                        <div class="slds-truncate" title="Reference Number">Reference Number</div>
+                    </th>
+                    <th class="" scope="col">
+                        <div class="slds-truncate" title="Invoice Value (INR)">Invoice Value (INR)</div>
+                    </th>                
+                    <th class="" scope="col">
+                        <div class="slds-truncate" title="Add">
+                            <lightning:button variant="brand"  title="Add Items" iconName="utility:add" onclick="{!c.onAdd }" />
+                        </div>
+                    </th>                   
+                </tr>
+            </thead>
+            <tbody>
+                <aura:iteration items="{!v.ValList}" var="con" indexVar="index">
+                    <tr class="slds-hint-parent">
+                        <td >
+                            <lightning:input type="number"                                              
+                                             value="{!con.NetWeightCarat }"  
+                                              required="true"/> 
+                        </td>
+                        <td>
+                            <lightning:input type="text"                                              
+                                             value="{!con.ReferenceNumber }"   /> 
+                        </td>
+                        <td >
+                            <lightning:input type="number" 
+                                             value="{!con.InvoiceValue }"  
+                                              required="true" />
+                        </td>  
+                        <td data-label="Delete">
+                            <lightning:button name="{!index}" variant="brand"  title="Delete Items" iconName="utility:delete" onclick="{!c.onDelete }" />
+                        </td>
+                    </tr>
+                </aura:iteration>
+                <tr>
+                    <td>Total Net Wt :{!v.nwc} Carat</td>
+                    <td></td>
+                    <td>Total Net Value :{!v.IValue} INR</td>
+                </tr>
+            </tbody>  
+        </table>
+    </div>
+</aura:component>

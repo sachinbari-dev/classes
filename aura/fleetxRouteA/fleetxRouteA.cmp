@@ -1,0 +1,59 @@
+<aura:component controller="fleetxRouteHelper" implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningQuickAction" access="global" >
+    
+    <aura:attribute name="FAdd" type="FleetX_AddressBook__c"/>
+    <aura:attribute name="rName" type="String"/>
+    <aura:attribute name="A_List" type="String"/>
+    <aura:attribute name="finalString" type="String"/>
+    <aura:attribute name="adrmap" type="List"/>
+    
+    <aura:attribute name="points1" type="List[]"/>
+    
+    <aura:attribute name="A1_List" type="set[]"/>
+    <aura:attribute name="Id_List" type="List"/>
+    <aura:attribute name="h1" type="boolean" default="false"/>
+    <div class="margin1">
+        <lightning:card variant="Narrow" title="FleetXRoute" iconName="standard:account" footer="FlletX Record Generation">
+            <p class="slds-p-horizontal_small">
+                <lightning:input label="Route Name1" type="text" value="{!v.rName}" size="50" required="true"/>
+                <br/>
+                Select FleetX Address Route
+                <c:TMS_Lookup3 objectName="FleetX_AddressBook__c"
+                               field_API_text="Name"
+                               field_API_val="Id"
+                               limit="8"
+                               field_API_search="Address_Name__c"
+                               lookupIcon="standard:asset_object" 
+                               selItem="{!v.FAdd}"
+                               placeholder="Search FleetX Addresses"
+                               />&nbsp;&nbsp;                         
+                <br/>
+                <table>
+                    <tr>
+                        <td>
+                            <lightning:button variant="brand" label="Add Address" title="Brand action" onclick="{!c.proceeds}"></lightning:button>
+                        </td>
+                        <td>
+                            <aura:if isTrue="{!v.h1}">
+                                <lightning:button variant="brand" label="Create" title="Brand action" onclick="{!c.createdRecord}"></lightning:button>
+                            </aura:if>
+                        </td>
+                    </tr>
+                </table>
+                <br/>
+                <aura:if isTrue="{!v.h1}">
+                    Total Addresses Selected : <br/>
+                    <!--
+            <aura:iteration items="{!v.A1_List}" var="step">
+               <div class="slds-truncate" title="{!step}">{!step}</div>
+            </aura:iteration>
+            -->
+                    <br/>
+                    <aura:iteration items="{!v.adrmap}" var="cus" indexVar="key">
+                        {!cus.key} - {!cus.value}<br/><br/>
+                    </aura:iteration>
+                    
+                </aura:if>
+            </p>
+        </lightning:card>
+    </div>
+</aura:component>

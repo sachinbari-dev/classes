@@ -1,0 +1,155 @@
+<aura:component controller="fleetxJobHelper" implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningQuickAction" access="global" >
+    
+    <aura:attribute name="FAdd" type="FleetX_People__c"/>
+    <aura:attribute name="gmFAdd" type="FleetX_People__c"/>
+    <aura:attribute name="esFAdd" type="FleetX_People__c"/>
+    <aura:attribute name="rName" type="String"/>
+    
+    <aura:attribute name="D_List" type="String"/>
+    <aura:attribute name="GM_List" type="String"/>
+    <aura:attribute name="ES_List" type="String"/>   
+    
+    <aura:attribute name="finalString" type="String"/>
+    <aura:attribute name="gmfinalString" type="String"/>
+    <aura:attribute name="esfinalString" type="String"/>
+    
+    <aura:attribute name="adrmap" type="List"/>
+    <aura:attribute name="gmmap" type="List"/>
+    <aura:attribute name="esmap" type="List"/>
+    <!--
+    <aura:attribute name="points1" type="List[]"/>
+    <aura:attribute name="gmpoints1" type="List[]"/>
+    <aura:attribute name="espoints1" type="List[]"/>
+    -->
+    <aura:attribute name="A1_List" type="set[]"/>
+    <aura:attribute name="Id_List" type="List[]"/>
+    <aura:attribute name="gmId_List" type="List[]"/>
+    <aura:attribute name="esId_List" type="List[]"/>
+    <aura:attribute name="h1" type="boolean" default="false"/>
+
+    <aura:attribute name="vehicleNumber" type="String"/>
+    <aura:attribute name="CurrencyIsoCode" type="String"/>
+    <aura:attribute name="integrationstatus" type="String"/>
+    <aura:attribute name="startDateTime" type="String"/>
+    <aura:attribute name="lastModifiedDate" type="String"/>
+    <aura:attribute name="FleetX_RoutesName" type="String"/>
+    <aura:attribute name="scheduleDeparture" type="String"/>
+    <aura:attribute name="scheduleArrival" type="String"/>
+    <aura:attribute name="FleetXJobID" type="String"/>     
+    
+    <!-- newly Added one -->
+    <div class="margin2">
+        <lightning:card variant="Narrow" title="FleetX JOB " iconName="standard:account" footer="FlletX Record Generation">
+            <p class="slds-p-horizontal_small">
+            <lightning:recordEditForm objectApiName="FleetXJob__c">
+                <lightning:messages />
+               <!-- <lightning:inputField aura:id="field" value="{!v.vehicleNumber}" fieldName="vehicleNumber__c" /> -->
+                <lightning:inputField aura:id="field" value="{!v.vehicleNumber}" fieldName="Vehicle_Number__c" />
+                <lightning:inputField aura:id="field" value="{!v.CurrencyIsoCode}" fieldName="CurrencyIsoCode" />
+                
+                <lightning:inputField aura:id="field" value="{!v.integrationstatus}" fieldName="integrationstatus__c" />
+                <lightning:inputField aura:id="field" value="{!v.startDateTime}" fieldName="startDateTime__c" />
+                <lightning:inputField aura:id="field" value="{!v.lastModifiedDate}" fieldName="lastModifiedDate__c" />
+                <lightning:inputField aura:id="field" value="{!v.FleetX_RoutesName}" fieldName="FleetX_RouteName__c" />
+                <lightning:inputField aura:id="field" value="{!v.scheduleDeparture}" fieldName="scheduleDeparture__c" />
+                <lightning:inputField aura:id="field" value="{!v.scheduleArrival}" fieldName="scheduleArrival__c" />                
+                <!-- <lightning:inputField aura:id="field" value="{!v.FleetXJobID}" fieldName="FleetXJobID__c" />   -->
+            </lightning:recordEditForm>  
+<!--  FleetXDriver   --> 
+         <lightning:card variant="Narrow" title="Select FleetX FleetXDriver" >             
+                <table>
+                    <tr>
+                        <td>
+                            <c:cutomLookup objectName="FleetX_People__c"
+                                           field_API_text="People_userType__c"
+                                           field_API_text1="DRIVER"
+                                           field_API_val="Id"
+                                           limit="8"
+                                           field_API_search="Name"
+                                           lookupIcon="standard:asset_object" 
+                                           selItem="{!v.FAdd}"
+                                           placeholder="Search Driver"
+                                           />                        
+                        </td>
+                        <td>
+                            <lightning:button variant="brand" label="Add" title="Brand action" onclick="{!c.getFleetXDriver}"></lightning:button>
+                        </td>
+                    </tr>
+                </table>
+                <br/>
+                <aura:if isTrue="{!v.adrmap}">
+                    Total FleetXDriver Selected :<br/>                                      
+                    <aura:iteration items="{!v.adrmap}" var="cus" indexVar="key">
+                        {!cus.key} - {!cus.value}<br/>
+                    </aura:iteration>                    
+                </aura:if>
+             </lightning:card>
+<!--  upto here FleetXDriver   -->                 
+<!--  FleetXGunMen   -->
+                <lightning:card variant="Narrow" title="Select FleetX FleetXGunMen1" >            
+                <table>
+                    <tr>
+                        <td>
+                            <c:cutomLookup objectName="FleetX_People__c"
+                                           field_API_text="People_userType__c"
+                                           field_API_text1="Gunman"
+                                           field_API_val="Id"
+                                           limit="8"
+                                           field_API_search="Name"
+                                           lookupIcon="standard:asset_object" 
+                                           selItem="{!v.gmFAdd}"
+                                           placeholder="Search Gunmen"
+                                           /> 
+                        </td>
+                        <td>
+                            <lightning:button variant="brand" label="Add" title="Brand action" onclick="{!c.getFleetXGunMen}"></lightning:button>
+                        </td>
+                    </tr>
+                </table>
+                <br/>
+                <aura:if isTrue="{!v.gmmap}">
+                    Total FleetXGunMen Selected : <br/>                    
+                    <aura:iteration items="{!v.gmmap}" var="cus" indexVar="key">
+                        {!cus.key} - {!cus.value}<br/>
+                    </aura:iteration>                    
+                </aura:if>
+                </lightning:card>
+<!--  upto here FleetXGunMen   -->  
+<!--  FleetX_Escorter   -->  
+           <lightning:card variant="Narrow" title="Select FleetX_Escorter" >                
+                <table>
+                    <tr>
+                        <td>
+                           <c:cutomLookup objectName="User"
+                           field_API_text="Employee_code_Matched__c"
+                           field_API_text1="true"
+                           field_API_val="Id"
+                           limit="8"
+                           field_API_search="Name"
+                           lookupIcon="standard:asset_object" 
+                           selItem="{!v.esFAdd}"
+                           placeholder="Search Escorter"
+                           />  
+                        </td>
+                        <td>
+                            <lightning:button variant="brand" label="Add" title="Brand action" onclick="{!c.getFleetX_Escorter}"></lightning:button>
+                        </td>                        
+                    </tr>
+                </table>
+                <br/>
+                <aura:if isTrue="{!v.esmap}">
+                    Total FleetX_Escorter Selected : <br/>                    
+                    <aura:iteration items="{!v.esmap}" var="cus" indexVar="key">
+                        {!cus.key} - {!cus.value}<br/>
+                    </aura:iteration>                    
+                </aura:if>
+                </lightning:card>
+                <aura:if isTrue="{!v.h1}">
+                    <lightning:button variant="brand" label="Create" title="Brand action" onclick="{!c.createdRecord}"></lightning:button>
+                </aura:if>
+<!--  upto here FleetX_Escorter   -->                                                 
+            </p>            
+        </lightning:card>
+    </div>
+    <!-- upto here -->    
+</aura:component>

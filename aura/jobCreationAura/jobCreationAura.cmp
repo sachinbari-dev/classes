@@ -1,0 +1,37 @@
+<aura:component implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningQuickAction" access="global" >
+    <aura:attribute name="CAccount" type="Account"/>
+    <aura:attribute name="selectChoice" type="String[]" default="Pickup,Delivery"/>
+    
+    <div class="slds-grid slds-grid_pull-padded-medium slds-m-around_x-large">
+        <div class="slds-col slds-p-horizontal_medium">
+            <span>
+                <lightning:select name="op" label="" required="true">
+                    <aura:iteration items="{!v.selectChoice}" var="ch">
+                        <option text="{!ch}"></option>
+                    </aura:iteration>
+                </lightning:select>
+            </span>
+        </div>        
+        <div class="slds-col slds-p-horizontal_medium">
+            <span>
+                <c:TMS_Lookup2 objectName="Account"
+                               field_API_text="Name"
+                               field_API_val="Id"
+                               limit="8"
+                               field_API_search="Name"
+                               lookupIcon="standard:asset_object" 
+                               selItem="{!v.CAccount}"
+                               placeholder="Search Customer Account"
+                               RecordType="Billing"
+                               field_API_text1="ST_Pricing_Type__c"
+                               isParent="true"
+                               />
+            </span>
+        </div>
+
+        <div class="slds-col slds-p-horizontal_medium">      
+            <span> 3
+            </span>  
+        </div>
+    </div>
+</aura:component>

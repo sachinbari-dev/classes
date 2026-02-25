@@ -1,0 +1,4 @@
+<aura:component implements="force:lightningQuickAction,force:hasRecordId,lightning:availableForFlowScreens" >
+	 <aura:attribute name="recordId" type="String" /> 
+    <c:addProduct_SO recordId="{!v.recordId}"/> 
+</aura:component>

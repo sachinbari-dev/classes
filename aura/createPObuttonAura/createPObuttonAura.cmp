@@ -1,0 +1,6 @@
+<aura:component implements="force:lightningQuickAction,flexipage:availableForAllPageTypes,lightning:availableForFlowScreens,lightning:isUrlAddressable">
+
+     <c:createPurchaseOrder /> 
+    
+   
+</aura:component>

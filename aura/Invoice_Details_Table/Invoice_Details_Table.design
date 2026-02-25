@@ -1,0 +1,5 @@
+<design:component label="InvoiceTable">
+	 <design:attribute name="nwc" label="Net Weight Carat"/> 
+    <design:attribute name="IValue" label="Invoice Value (INR)" />
+    <design:attribute name="refNo" label="Reference Number" />
+</design:component>

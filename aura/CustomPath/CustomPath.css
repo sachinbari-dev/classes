@@ -1,0 +1,18 @@
+.THIS .my-custom-box {
+    background-color: FloralWhite; /* Set the background color to lightblue */
+    border-color: blue;      /* Set the border color to navy */
+    border-width: 5px;       /* Set border width */
+    border-style: solid;     /* Set border style */
+}
+.THIS .top {
+    background-color: FloralWhite; /* Set the background color to lightblue */
+    color:red;
+     font-weight: bold; /* Bold text */
+}
+.THIS .bottom {
+    background-color: FloralWhite; /* Set the background color to lightblue */
+}
+.THIS .mid {
+    background-color: FloralWhite; /* Set the background color to lightblue */
+    font-weight: bold; /* Bold text */
+}

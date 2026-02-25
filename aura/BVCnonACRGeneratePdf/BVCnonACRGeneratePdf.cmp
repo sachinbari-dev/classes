@@ -1,0 +1,7 @@
+<aura:component controller="BVCnonAcrQuotePdfController">
+    <aura:attribute name="recordId" type="Id" />
+    
+    <lightning:button label="Generate and Attach PDF" onclick="{!c.generateAndAttachPdf}" />
+    
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
+</aura:component>

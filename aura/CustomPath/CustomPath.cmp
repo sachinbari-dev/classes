@@ -1,0 +1,44 @@
+<aura:component implements="flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId" 
+                controller="pickupController" >
+    <aura:attribute name="variant" type="String" default="non-linear"/>
+    <aura:attribute name="hideUpdateButton" type="Boolean" default="true"/>
+    <aura:attribute name="showModal" type="Boolean" default="false"/>
+    <aura:attribute name="isLoading" type="Boolean" default="false" />
+    <aura:attribute name="isHoliday" type="Boolean" default="false"/>
+    <aura:attribute name="pickupStage" type="String"/>
+    
+	<aura:handler name="init" value="{!this}" action="{!c.doInit}" />  
+    
+    <aura:if isTrue="{!v.isLoading}">
+        <lightning:spinner alternativeText="Loading..." size="medium" />
+    </aura:if>
+    
+    <lightning:path aura:id="path" recordId="{!v.recordId}"
+        variant="{!v.variant}"  hideUpdateButton="{!v.hideUpdateButton}"
+        onselect="{!c.handleSelect}" />
+    
+    <aura:if isTrue="{!v.showModal}">
+        
+            <section role="dialog" tabindex="-1" aria-modal="true" aria-labelledby="modal-heading-01" class="slds-modal slds-fade-in-open">
+            <div class="slds-modal__container">
+                <button class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse">
+                    <span class="slds-assistive-text">Cancel and close</span>
+                </button>
+                <div class="my-custom-box slds-box"> 
+                <div class="slds-modal__header top">
+                    <h1 id="modal-heading-01" class="slds-modal__title slds-hyphenate ">Holiday Intimation</h1>
+                </div>
+                
+                <div class="slds-modal__content slds-p-around_medium mid" id="modal-content-id-1">
+                	Seems like there is holiday on selected Date it may charge you extra please choose continue if you want to continue
+				   
+                </div>
+                <div class="slds-modal__footer bottom">
+                    <button class="slds-button slds-button_brand" aria-label="Continue" onclick="{!c.continueUpdate}">Continue</button>
+					<button class="slds-button slds-button_neutral" aria-label="Cancel and close" onclick="{!c.closeModal}">Cancel</button>                    
+                </div>
+                    </div>
+            </div>
+        </section>
+    </aura:if>
+</aura:component>

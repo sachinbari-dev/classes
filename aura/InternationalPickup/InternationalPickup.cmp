@@ -1,0 +1,194 @@
+<aura:component controller="InternaltionalPickupClass" implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningQuickAction" access="global" >
+	    <aura:attribute name="SelHub" type="Account"/>
+    <aura:attribute name="CAccount" type="Account"/>
+    
+    <aura:attribute name="BilAccount" type="Account"/>
+    <aura:attribute name="BilAdd" type="Object"/>
+    
+    <aura:attribute name="SelHub1" type="Object"/>
+    <aura:attribute name="Remarks" type="String"/>
+    <aura:attribute type="DateTime" name="P_Date"/>
+    <aura:attribute name="stag" type="boolean" default="false"/>
+    <aura:attribute name="refresh" type="boolean" default="false"/>
+    
+    <aura:attribute name="dup" type="boolean" default="false"/>
+    
+    <aura:attribute name="PKName" type="String"/>
+    
+    <aura:attribute name="cac" type="boolean" default="true"/>
+    <aura:attribute name="sac" type="boolean" default="true"/>
+    <aura:attribute name="sad" type="boolean" default="true"/>
+    <aura:attribute name="ssc" type="boolean" default="true"/>
+    
+    <aura:attribute name="man1" type="boolean" default="false"/>
+    
+    <aura:attribute name="tem" type="Boolean" default="false"/>
+    
+    <aura:attribute name="Name1" type="String" default="F"/>
+    
+    <aura:attribute name="peopl" type="Object"/>
+    <!--
+    <aura:method name="sampleMethod" action="{!c.getBillingAddressNames}" 
+                 description="Sample method with parameters"> 
+        <aura:attribute name="param1" type="String" default="parameter 1"/> 
+        <aura:attribute name="param2" type="Object" /> 
+    </aura:method> 
+    -->
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
+    <lightning:card footer="Fill all the Mandatory Fields" title="International Pickup">
+        <p class="slds-p-horizontal_large">
+            <p class="slds-p-horizontal_large">
+            <div class="margins">
+                <aura:if isTrue="{!v.refresh}">    
+                    <aura:set attribute="else">          
+                        <label class="slds-form-element__label" for="text-input-id-1"> Customer Account </label>
+                        <div class="slds-form-element__control">
+                            <c:InternationalLookup2 objectName="Account"
+                                           field_API_text="Name"
+                                           field_API_val="Id"
+                                           limit="8"
+                                           field_API_search="Name"
+                                           lookupIcon="standard:asset_object" 
+                                           selItem="{!v.CAccount}"
+                                           placeholder="Search Customer Account"
+                                           RecordType="Billing"
+                                           field_API_text1="Customer_Category_Static__c"
+                                           isParent="true"
+                                           />&nbsp;&nbsp; 
+                        </div>  
+                        <aura:if isTrue="{!v.cac}">    
+                            <aura:set attribute="else">
+                                <div class="error1">Select Customer Account</div>
+                            </aura:set>
+                        </aura:if>  
+                        <aura:if isTrue="{!v.CAccount.text1}">
+                        <b>Customer Category : {!v.CAccount.text1}</b><br/>
+                        </aura:if>                        
+                        <aura:if isTrue="{!v.CAccount.CreditStatus}">
+                        <b>Credit Status : {!v.CAccount.CreditStatus}</b><br/>
+                        </aura:if>
+                        <!--Child Accounts : {!v.CAccount.childAc}<br/-->
+                        <!-- newly added one -->                      
+                        <aura:if isTrue="{!v.CAccount.childAc > 0}">
+                            <label class="slds-form-element__label" for="text-input-id-1"> Billing Account </label>
+                            <div class="slds-form-element__control">
+                                <c:InternationalLookup2 objectName="Account"
+                                               field_API_text="Name"
+                                               field_API_val="Id"
+                                               limit="8"
+                                               field_API_search="Name"
+                                               lookupIcon="standard:asset_object" 
+                                               selItem="{!v.BilAccount}"
+                                               placeholder="Search Customer Account"
+                                               RecordType="Billing"
+                                               CustAcId="{!v.CAccount.val}"
+                                               field_API_text1="ST_Pricing_Type__c"
+                                               />&nbsp;&nbsp; 
+                            </div> 
+                            <aura:if isTrue="{!v.man1}">    
+                                <div class="error1" style="color: red;">Select Billing Account and Billing Address</div>
+                            </aura:if>
+                        </aura:if>
+                        
+                        <aura:if isTrue="{!v.BilAccount}">
+                            
+                            
+                            <label class="slds-form-element__label" for="text-input-id-1"> Billing Address</label>
+                            <div class="slds-form-element__control">
+                                <c:InternationalLookup2 objectName="AddressBook__c"
+                                               field_API_text="Name"
+                                               field_API_val="Id"
+                                               limit="8"
+                                               field_API_search="Name"
+                                               lookupIcon="standard:asset_object" 
+                                               selItem="{!v.BilAdd}"
+                                               placeholder="Search Billing Address"
+                                               ShipAcId = "{!v.BilAccount.val}"
+                                               />&nbsp;&nbsp; 
+                            </div>
+                        </aura:if>            
+                        <!-- upto here -->            
+                        <label class="slds-form-element__label" for="text-input-id-1"> Shipping Account </label>
+                        <div class="slds-form-element__control">
+                            <c:InternationalLookup2 objectName="Account"
+                                           field_API_text="Name"
+                                           field_API_val="Id"
+                                           limit="8"
+                                           field_API_search="Name"
+                                           lookupIcon="standard:asset_object" 
+                                           selItem="{!v.SelHub}"
+                                           placeholder="Search Shipping Account"
+                                           RecordType="Shipping"
+                                           />&nbsp;&nbsp; 
+                        </div>
+                        <aura:if isTrue="{!v.sac}">    
+                            <aura:set attribute="else">
+                                <div class="error1" style="color: red;">Select Shipper Account</div>
+                            </aura:set>
+                        </aura:if> 
+                        <aura:if isTrue="{!v.SelHub.val}">
+                            <label class="slds-form-element__label" for="text-input-id-1"> Shipping Address</label>
+                            <div class="slds-form-element__control">
+                                <c:InternationalLookup2 objectName="AddressBook__c"
+                                               field_API_text="Name"
+                                               field_API_val="Id"
+                                               limit="8"
+                                               field_API_search="Name"
+                                               lookupIcon="standard:asset_object" 
+                                               selItem="{!v.SelHub1}"
+                                               placeholder="Search Shipping Address"
+                                               ShipAcId = "{!v.SelHub.val}"
+                                               />&nbsp;&nbsp; 
+                            </div>
+                        </aura:if>
+                        <aura:if isTrue="{!v.sad}">    
+                            <aura:set attribute="else">
+                                <div class="error1" style="color: red;">Select Shipping Aaddress</div>
+                            </aura:set>
+                        </aura:if> 
+                        <!--
+                        <aura:if isTrue="{!v.SelHub1.val}">
+                            <label class="slds-form-element__label" for="text-input-id-1"> Notify Shipper Contact</label>
+                            <div class="slds-form-element__control">
+                                <c:TMS_Lookup2 objectName="Contact"
+                                               field_API_text="Name"
+                                               field_API_val="Id"
+                                               limit="8"
+                                               field_API_search="Name"
+                                               lookupIcon="standard:contact" 
+                                               selItem="{!v.peopl}"
+                                               placeholder="Search People"
+                                               ShipAcId = "{!v.SelHub1.val}"
+                                               />&nbsp;&nbsp; 
+                            </div>   
+                            
+                            <aura:if isTrue="{!v.ssc}">    
+                                <aura:set attribute="else">
+                                    <div class="error1" style="color: red;">Select Notify Shipper Contact</div>
+                                </aura:set>
+                            </aura:if> 
+                            
+                        </aura:if>
+                        -->
+                        
+                        
+                        
+                        
+                        <lightning:input type="datetime" name="input2" label="Pickup Date and Time" value="{!v.P_Date}"/>
+                        <lightning:textarea name="input1" label="Remarks" value="{!v.Remarks}"></lightning:textarea>
+                        <br/>
+                        <aura:if isTrue="{!v.dup}"> 
+                            <ui:inputCheckbox aura:id="checkbox" label="Save Duplicate" change="{!c.onCheck}"/>
+                        </aura:if>
+                        <center>
+                            <!-- <lightning:button variant="brand" label="Cancel" title="Cancel" onclick="{!c.handleCancel}"/> -->
+                            <lightning:button variant="brand" label="Save" title="Save" onclick="{!c.handleSave}"/>
+                        </center>
+                        
+                    </aura:set>
+                </aura:if>     
+            </div>   
+        </p>
+        </p>
+    </lightning:card>
+</aura:component>

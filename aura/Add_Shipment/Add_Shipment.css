@@ -1,0 +1,82 @@
+.THIS {
+}
+
+.THIS.buttonColor {
+  background-color: #6d6d6d; /* Green */
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+}
+
+.THIS.error1{
+    color: red;
+    font-weight: bold;
+}
+
+.THIS.tableMargins
+{
+    margin-right: 150px;
+    margin-left: 80px;   
+}
+
+.THIS.margins{
+    margin-right: 150px;
+    margin-left: 80px;
+    font-weight: bold;
+    margin-block: 35px;
+}
+.THIS.p {
+    margin-top: 10px;
+    margin-right: 150px;
+    margin-left: 80px;
+}
+
+.THIS.cen {
+    margin-top: 10px;
+    margin-right: 150px;
+    margin-left: 500px;
+    margin-bottom : 10px;
+}
+.THIS .dark-grey-button {
+    background-color: dark grey; /* Change this to the shade of grey you prefer */
+    color: black; /* Set the text color */
+    /* You can add more styling properties as needed */
+}
+.THIS .dark-grey-button {
+    background-color: dark grey; /* Change this to the shade of grey you prefer */
+    color: black; /* Set the text color */
+    /* You can add more styling properties as needed */
+}
+.THIS .required-indicator::before {
+  content: '* ';
+  color: red;
+}
+.THIS .required-indicator::before {
+  content: '* ';
+  color: red;
+}
+.THIS.slds-truncate {
+  font-size: 6px; /* Adjust the value as needed */
+}
+.THIS.center-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh; /* Adjust this based on your design */
+}
+.THIS .custom-blue-icon {
+    color: blue; /* Set the desired blue color */
+}
+/* remove the "or drop files" label from the right of the lightning:input type file */
+.THIS .slds-file-selector__dropzone .slds-file-selector__text{
+    display: none;
+}
+
+/* remove the "Upload Files" text from the button of the lightning:input type file */
+.THIS .slds-file-selector__dropzone .slds-file-selector__button{
+    font-size: 0;
+}

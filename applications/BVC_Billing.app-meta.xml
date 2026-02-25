@@ -1,0 +1,659 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomApplication xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionOverrides>
+        <actionName>View</actionName>
+        <comment>Action override created by Lightning App Builder during activation.</comment>
+        <content>BVCOrder_Record_Page1</content>
+        <formFactor>Large</formFactor>
+        <skipRecordTypeSelect>false</skipRecordTypeSelect>
+        <type>Flexipage</type>
+        <pageOrSobjectType>BVCOrder__c</pageOrSobjectType>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <comment>Action override created by Lightning App Builder during activation.</comment>
+        <content>BVCOrder_Record_Page1</content>
+        <formFactor>Small</formFactor>
+        <skipRecordTypeSelect>false</skipRecordTypeSelect>
+        <type>Flexipage</type>
+        <pageOrSobjectType>BVCOrder__c</pageOrSobjectType>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <comment>Action override created by Lightning App Builder during activation.</comment>
+        <content>Purchase_Order_Record_Page3</content>
+        <formFactor>Large</formFactor>
+        <skipRecordTypeSelect>false</skipRecordTypeSelect>
+        <type>Flexipage</type>
+        <pageOrSobjectType>Purchase_Order__c</pageOrSobjectType>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <comment>Action override created by Lightning App Builder during activation.</comment>
+        <content>Purchase_Order_Record_Page3</content>
+        <formFactor>Small</formFactor>
+        <skipRecordTypeSelect>false</skipRecordTypeSelect>
+        <type>Flexipage</type>
+        <pageOrSobjectType>Purchase_Order__c</pageOrSobjectType>
+    </actionOverrides>
+    <brand>
+        <headerColor>#09337B</headerColor>
+        <shouldOverrideOrgTheme>false</shouldOverrideOrgTheme>
+    </brand>
+    <formFactors>Small</formFactors>
+    <formFactors>Large</formFactors>
+    <isNavAutoTempTabsDisabled>false</isNavAutoTempTabsDisabled>
+    <isNavPersonalizationDisabled>false</isNavPersonalizationDisabled>
+    <isNavTabPersistenceDisabled>false</isNavTabPersistenceDisabled>
+    <isOmniPinnedViewEnabled>false</isOmniPinnedViewEnabled>
+    <label>BVC Billing</label>
+    <navType>Standard</navType>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>BVCOrder_Record_Page1</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>BVCOrder__c</pageOrSobjectType>
+        <type>Flexipage</type>
+        <profile>Admin</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>BVCOrder_Record_Page1</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>BVCOrder__c</pageOrSobjectType>
+        <type>Flexipage</type>
+        <profile>Admin</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>BVCOrder_Record_Page1</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>BVCOrder__c</pageOrSobjectType>
+        <type>Flexipage</type>
+        <profile>System Administrator2</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>BVCOrder_Record_Page1</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>BVCOrder__c</pageOrSobjectType>
+        <type>Flexipage</type>
+        <profile>System Administrator2</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>BVCOrder_Record_Page1</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>BVCOrder__c</pageOrSobjectType>
+        <type>Flexipage</type>
+        <profile>Operations Office Executive</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>BVCOrder_Record_Page1</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>BVCOrder__c</pageOrSobjectType>
+        <type>Flexipage</type>
+        <profile>Operations Office Executive</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>BVCOrder_Record_Page1</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>BVCOrder__c</pageOrSobjectType>
+        <type>Flexipage</type>
+        <profile>Operations Field Executive</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>BVCOrder_Record_Page1</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>BVCOrder__c</pageOrSobjectType>
+        <type>Flexipage</type>
+        <profile>Operations Field Executive</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>BVCOrder_Record_Page1</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>BVCOrder__c</pageOrSobjectType>
+        <type>Flexipage</type>
+        <profile>Operations Admin</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>BVCOrder_Record_Page1</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>BVCOrder__c</pageOrSobjectType>
+        <type>Flexipage</type>
+        <profile>Operations Admin</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>BVCOrder_Record_Page1</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>BVCOrder__c</pageOrSobjectType>
+        <type>Flexipage</type>
+        <profile>BVC Sales Head</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>BVCOrder_Record_Page1</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>BVCOrder__c</pageOrSobjectType>
+        <type>Flexipage</type>
+        <profile>BVC Sales Head</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>BVCOrder_Record_Page1</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>BVCOrder__c</pageOrSobjectType>
+        <type>Flexipage</type>
+        <profile>BVC Sales User</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>BVCOrder_Record_Page1</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>BVCOrder__c</pageOrSobjectType>
+        <type>Flexipage</type>
+        <profile>BVC Sales User</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>BVCOrder_Record_Page1</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>BVCOrder__c</pageOrSobjectType>
+        <type>Flexipage</type>
+        <profile>BVC Sales &amp; TMS</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>BVCOrder_Record_Page1</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>BVCOrder__c</pageOrSobjectType>
+        <type>Flexipage</type>
+        <profile>BVC Sales &amp; TMS</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>BVCOrder_Record_Page1</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>BVCOrder__c</pageOrSobjectType>
+        <type>Flexipage</type>
+        <profile>BVC Billing User</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>BVCOrder_Record_Page1</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>BVCOrder__c</pageOrSobjectType>
+        <type>Flexipage</type>
+        <profile>BVC Billing User</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>BVCOrder_Record_Page1</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>BVCOrder__c</pageOrSobjectType>
+        <type>Flexipage</type>
+        <profile>BVC Billing Head</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>BVCOrder_Record_Page1</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>BVCOrder__c</pageOrSobjectType>
+        <type>Flexipage</type>
+        <profile>BVC Billing Head</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>BVCOrder_Record_Page1</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>BVCOrder__c</pageOrSobjectType>
+        <type>Flexipage</type>
+        <profile>BVC Billing Admin</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>BVCOrder_Record_Page1</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>BVCOrder__c</pageOrSobjectType>
+        <type>Flexipage</type>
+        <profile>BVC Billing Admin</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>BVCOrder_Record_Page1</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>BVCOrder__c</pageOrSobjectType>
+        <type>Flexipage</type>
+        <profile>BVC Billing User CB</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>BVCOrder_Record_Page1</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>BVCOrder__c</pageOrSobjectType>
+        <type>Flexipage</type>
+        <profile>BVC Billing User CB</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>BVCOrder_Record_Page1</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>BVCOrder__c</pageOrSobjectType>
+        <type>Flexipage</type>
+        <profile>Billing User CB</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>BVCOrder_Record_Page1</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>BVCOrder__c</pageOrSobjectType>
+        <type>Flexipage</type>
+        <profile>Billing User CB</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>BVCOrder_Record_Page1</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>BVCOrder__c</pageOrSobjectType>
+        <type>Flexipage</type>
+        <profile>Billing User</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>BVCOrder_Record_Page1</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>BVCOrder__c</pageOrSobjectType>
+        <type>Flexipage</type>
+        <profile>Billing User</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>BVCOrder_Record_Page1</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>BVCOrder__c</pageOrSobjectType>
+        <type>Flexipage</type>
+        <profile>Billing Head</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>BVCOrder_Record_Page1</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>BVCOrder__c</pageOrSobjectType>
+        <type>Flexipage</type>
+        <profile>Billing Head</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>BVCOrder_Record_Page1</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>BVCOrder__c</pageOrSobjectType>
+        <type>Flexipage</type>
+        <profile>Billing Admin</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>BVCOrder_Record_Page1</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>BVCOrder__c</pageOrSobjectType>
+        <type>Flexipage</type>
+        <profile>Billing Admin</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>BVCOrder_Record_Page1</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>BVCOrder__c</pageOrSobjectType>
+        <recordType>BVCOrder__c.Shipment</recordType>
+        <type>Flexipage</type>
+        <profile>Admin</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>BVCOrder_Record_Page1</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>BVCOrder__c</pageOrSobjectType>
+        <recordType>BVCOrder__c.Shipment</recordType>
+        <type>Flexipage</type>
+        <profile>Admin</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>BVCOrder_Record_Page1</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>BVCOrder__c</pageOrSobjectType>
+        <recordType>BVCOrder__c.Shipment</recordType>
+        <type>Flexipage</type>
+        <profile>System Administrator2</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>BVCOrder_Record_Page1</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>BVCOrder__c</pageOrSobjectType>
+        <recordType>BVCOrder__c.Shipment</recordType>
+        <type>Flexipage</type>
+        <profile>System Administrator2</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>BVCOrder_Record_Page1</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>BVCOrder__c</pageOrSobjectType>
+        <recordType>BVCOrder__c.Shipment</recordType>
+        <type>Flexipage</type>
+        <profile>Operations Office Executive</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>BVCOrder_Record_Page1</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>BVCOrder__c</pageOrSobjectType>
+        <recordType>BVCOrder__c.Shipment</recordType>
+        <type>Flexipage</type>
+        <profile>Operations Office Executive</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>BVCOrder_Record_Page1</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>BVCOrder__c</pageOrSobjectType>
+        <recordType>BVCOrder__c.Shipment</recordType>
+        <type>Flexipage</type>
+        <profile>Operations Field Executive</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>BVCOrder_Record_Page1</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>BVCOrder__c</pageOrSobjectType>
+        <recordType>BVCOrder__c.Shipment</recordType>
+        <type>Flexipage</type>
+        <profile>Operations Field Executive</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>BVCOrder_Record_Page1</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>BVCOrder__c</pageOrSobjectType>
+        <recordType>BVCOrder__c.Shipment</recordType>
+        <type>Flexipage</type>
+        <profile>Operations Admin</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>BVCOrder_Record_Page1</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>BVCOrder__c</pageOrSobjectType>
+        <recordType>BVCOrder__c.Shipment</recordType>
+        <type>Flexipage</type>
+        <profile>Operations Admin</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>BVCOrder_Record_Page1</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>BVCOrder__c</pageOrSobjectType>
+        <recordType>BVCOrder__c.Shipment</recordType>
+        <type>Flexipage</type>
+        <profile>BVC Sales Head</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>BVCOrder_Record_Page1</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>BVCOrder__c</pageOrSobjectType>
+        <recordType>BVCOrder__c.Shipment</recordType>
+        <type>Flexipage</type>
+        <profile>BVC Sales Head</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>BVCOrder_Record_Page1</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>BVCOrder__c</pageOrSobjectType>
+        <recordType>BVCOrder__c.Shipment</recordType>
+        <type>Flexipage</type>
+        <profile>BVC Sales User</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>BVCOrder_Record_Page1</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>BVCOrder__c</pageOrSobjectType>
+        <recordType>BVCOrder__c.Shipment</recordType>
+        <type>Flexipage</type>
+        <profile>BVC Sales User</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>BVCOrder_Record_Page1</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>BVCOrder__c</pageOrSobjectType>
+        <recordType>BVCOrder__c.Shipment</recordType>
+        <type>Flexipage</type>
+        <profile>BVC Sales &amp; TMS</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>BVCOrder_Record_Page1</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>BVCOrder__c</pageOrSobjectType>
+        <recordType>BVCOrder__c.Shipment</recordType>
+        <type>Flexipage</type>
+        <profile>BVC Sales &amp; TMS</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>BVCOrder_Record_Page1</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>BVCOrder__c</pageOrSobjectType>
+        <recordType>BVCOrder__c.Shipment</recordType>
+        <type>Flexipage</type>
+        <profile>BVC Billing User</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>BVCOrder_Record_Page1</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>BVCOrder__c</pageOrSobjectType>
+        <recordType>BVCOrder__c.Shipment</recordType>
+        <type>Flexipage</type>
+        <profile>BVC Billing User</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>BVCOrder_Record_Page1</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>BVCOrder__c</pageOrSobjectType>
+        <recordType>BVCOrder__c.Shipment</recordType>
+        <type>Flexipage</type>
+        <profile>BVC Billing Head</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>BVCOrder_Record_Page1</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>BVCOrder__c</pageOrSobjectType>
+        <recordType>BVCOrder__c.Shipment</recordType>
+        <type>Flexipage</type>
+        <profile>BVC Billing Head</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>BVCOrder_Record_Page1</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>BVCOrder__c</pageOrSobjectType>
+        <recordType>BVCOrder__c.Shipment</recordType>
+        <type>Flexipage</type>
+        <profile>BVC Billing Admin</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>BVCOrder_Record_Page1</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>BVCOrder__c</pageOrSobjectType>
+        <recordType>BVCOrder__c.Shipment</recordType>
+        <type>Flexipage</type>
+        <profile>BVC Billing Admin</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>BVCOrder_Record_Page1</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>BVCOrder__c</pageOrSobjectType>
+        <recordType>BVCOrder__c.Shipment</recordType>
+        <type>Flexipage</type>
+        <profile>BVC Billing User CB</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>BVCOrder_Record_Page1</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>BVCOrder__c</pageOrSobjectType>
+        <recordType>BVCOrder__c.Shipment</recordType>
+        <type>Flexipage</type>
+        <profile>BVC Billing User CB</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>BVCOrder_Record_Page1</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>BVCOrder__c</pageOrSobjectType>
+        <recordType>BVCOrder__c.Shipment</recordType>
+        <type>Flexipage</type>
+        <profile>Billing User CB</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>BVCOrder_Record_Page1</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>BVCOrder__c</pageOrSobjectType>
+        <recordType>BVCOrder__c.Shipment</recordType>
+        <type>Flexipage</type>
+        <profile>Billing User CB</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>BVCOrder_Record_Page1</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>BVCOrder__c</pageOrSobjectType>
+        <recordType>BVCOrder__c.Shipment</recordType>
+        <type>Flexipage</type>
+        <profile>Billing User</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>BVCOrder_Record_Page1</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>BVCOrder__c</pageOrSobjectType>
+        <recordType>BVCOrder__c.Shipment</recordType>
+        <type>Flexipage</type>
+        <profile>Billing User</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>BVCOrder_Record_Page1</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>BVCOrder__c</pageOrSobjectType>
+        <recordType>BVCOrder__c.Shipment</recordType>
+        <type>Flexipage</type>
+        <profile>Billing Head</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>BVCOrder_Record_Page1</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>BVCOrder__c</pageOrSobjectType>
+        <recordType>BVCOrder__c.Shipment</recordType>
+        <type>Flexipage</type>
+        <profile>Billing Head</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>BVCOrder_Record_Page1</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>BVCOrder__c</pageOrSobjectType>
+        <recordType>BVCOrder__c.Shipment</recordType>
+        <type>Flexipage</type>
+        <profile>Billing Admin</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>BVCOrder_Record_Page1</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>BVCOrder__c</pageOrSobjectType>
+        <recordType>BVCOrder__c.Shipment</recordType>
+        <type>Flexipage</type>
+        <profile>Billing Admin</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Account_Record_Page</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>Account</pageOrSobjectType>
+        <recordType>Account.Billing</recordType>
+        <type>Flexipage</type>
+        <profile>Admin</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Account_Record_Page</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Account</pageOrSobjectType>
+        <recordType>Account.Billing</recordType>
+        <type>Flexipage</type>
+        <profile>Admin</profile>
+    </profileActionOverrides>
+    <tabs>BVCQuote__c</tabs>
+    <tabs>BVCInvoice__c</tabs>
+    <tabs>BVCOrder__c</tabs>
+    <tabs>BVCCreditNote__c</tabs>
+    <tabs>BVCPayment__c</tabs>
+    <tabs>BVC_Payment_Allocation_Debit_Note_Line__c</tabs>
+    <tabs>BVC_Invoice_Run__c</tabs>
+    <tabs>BVC_Legal_Entities__c</tabs>
+    <tabs>BVC_CB_Error_Log__c</tabs>
+    <tabs>Data_Migration_Log__c</tabs>
+    <tabs>State_Access__c</tabs>
+    <tabs>Product_Master__c</tabs>
+    <tabs>WMS_Products__c</tabs>
+    <tabs>Purchase_Order__c</tabs>
+    <tabs>Sales_Order__c</tabs>
+    <tabs>City_To_City_SLA__c</tabs>
+    <tabs>Finance_Snapshot__c</tabs>
+    <tabs>ImageCompTestObj__c</tabs>
+    <tabs>Lock__c</tabs>
+    <tabs>Hyperlocal_Vault__c</tabs>
+    <tabs>Bike_Inventory_Association__c</tabs>
+    <tabs>Gps_Vault_Association__c</tabs>
+    <tabs>BVC_bulk_Agreement_signing__c</tabs>
+    <tabs>Valueable_Price__c</tabs>
+    <tabs>Vault_Shipmet__c</tabs>
+    <tabs>Brinks_Standard_Rate__c</tabs>
+    <tabs>BVC_LegalEntity__c</tabs>
+    <tabs>Finance_Invoice__c</tabs>
+    <tabs>FinInvLineItem__c</tabs>
+    <tabs>Apex_Error_Log__c</tabs>
+    <tabs>Fixed_Billing__c</tabs>
+    <tabs>Fixed_Billing_Daily__c</tabs>
+    <tabs>Linehaul_Error_Log__c</tabs>
+    <tabs>Service_Insurance_Master__c</tabs>
+    <tabs>Secure_Bag_Error_Validation__c</tabs>
+    <tabs>Special_Movement__c</tabs>
+    <tabs>Billing_Automation__c</tabs>
+    <tabs>BVC_Deals__c</tabs>
+    <tabs>Security_Scan_Packs__c</tabs>
+    <tabs>Delivery_Line__c</tabs>
+    <tabs>Delivery_Address_Stop__c</tabs>
+    <tabs>PincodePickupCutoffConfig__c</tabs>
+    <tabs>Shipment_Exception__c</tabs>
+    <tabs>Shipment_Exception_Bag_Detail__c</tabs>
+    <uiType>Lightning</uiType>
+    <utilityBar>BVC_Billing_UtilityBar</utilityBar>
+</CustomApplication>

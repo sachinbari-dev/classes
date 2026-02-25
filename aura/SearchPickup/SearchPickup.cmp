@@ -1,0 +1,22 @@
+<aura:component controller="CustomSearchController">
+    <aura:attribute name="searchTerm" type="String" default="" />
+    <aura:attribute name="searchResults" type="List" />
+    
+    <div>
+        <lightning:input type="text" label="Search" value="{!v.searchTerm}" />
+        <lightning:button label="Search" onclick="{!c.handleSearch}" />
+    </div>
+    
+    <div>
+        <aura:if isTrue="{!not(empty(v.searchResults))}">
+            <ul>
+                <aura:iteration items="{!v.searchResults}" var="result">
+                    <li>{!result.Name} - {!result.Description}</li>
+                </aura:iteration>
+            </ul>
+            <aura:set attribute="else">
+                No results found.
+            </aura:set>
+        </aura:if>
+    </div>
+</aura:component>

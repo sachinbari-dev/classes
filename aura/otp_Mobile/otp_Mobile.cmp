@@ -1,0 +1,4 @@
+<aura:component implements="force:hasRecordId,lightning:actionOverride,lightning:hasPageReference">
+	<aura:attribute name="selectedRecordId" type="Id" />
+    <c:otp_Mobile recTypeId="{!v.selectedRecordId}"></c:otp_Mobile>
+</aura:component>

@@ -1,0 +1,5 @@
+<aura:component implements="force:lightningQuickAction" >
+	<aura:attribute name="recordId" type="Id"/>
+    <lightning:button label="Create Document" onclick="{!c.startFlow}"/>
+    <lightning:flow aura:id="flowData" onstatuschange="{!c.handleStatusChange}"/>
+</aura:component>
